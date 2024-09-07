@@ -5,21 +5,21 @@ import sys
 first_arg = sys.argv[1]
 
 
+new_dict = {}  # Initialize an empty dictionary to store city names and their temperatures
 
-new_dict = {}
-
-with open("weather.json", 'r') as file:
+# Open the 'weather.json' file in read mode
+with open("weather.json", 'r') as file: 
     json_file_data = json.load(file)
 
     for data in json_file_data:
+        # Check if the city is not already in the dictionary
         if data["city"] not in new_dict:
+            #If the city is not in the dictionary, create a new entry with the city name as the key
+            # and initialize its value as a list containing the first temperature
             new_dict[data["city"]] = [data["temperature"]]
         else:
+            # If the city already exists in the dictionary, append the new temperature to the city's list
             new_dict[data["city"]].append(data["temperature"]) 
-
-
-
-
 
 
 #list of all cities avaialble 
@@ -28,10 +28,7 @@ if first_arg == "--list":
     for each_cities , temperature in new_dict.items():
         print (each_cities)
 
-
-
 #help section writing
-
 elif first_arg == "--help":
     print("""
 Weather Analysis Tool - Help Section
@@ -62,6 +59,6 @@ Additional Information:
 For more detailed documentation, visit the user guide or contact support.
 """)
 
-#master edge case, If User input is not correct this case will run
+# Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
 else:
-    print("use -- help command and this will show you how to use this tool.")
+    print("input is invalid or not recognized\nuse -- help command and this will show you how to use this tool.")
