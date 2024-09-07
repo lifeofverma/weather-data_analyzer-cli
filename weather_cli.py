@@ -1,10 +1,6 @@
 import json
 import sys
 
-
-first_arg = sys.argv[1]
-
-
 new_dict = {}  # Initialize an empty dictionary to store city names and their temperatures
 
 # Open the 'weather.json' file in read mode
@@ -22,43 +18,18 @@ with open("weather.json", 'r') as file:
             new_dict[data["city"]].append(data["temperature"]) 
 
 
-#list of all cities avaialble 
 
-if first_arg == "--list":
-    for each_cities , temperature in new_dict.items():
-        print (each_cities)
+#average temp
 
-#help section writing
-elif first_arg == "--help":
-    print("""
-Weather Analysis Tool - Help Section
+if len(sys.argv) <= 1:
+    for each_city , temperature in new_dict.items():
+        average_temperature = sum(temperature)
+        celsius_temprature = (average_temperature - 32) * 5/9
+        print (f"{each_city}{celsius_temprature} celsius")
 
-This CLI tool reads weather data from a JSON file, calculates average temperatures for each city, and provides various functionalities for analyzing and displaying the data.
+sys.exit(1)
+first_arg = sys.argv[1]
+#print(new_dict)
 
-Usage:
-    weather_tool [OPTIONS]
 
-Options:
-    --city CITY_NAME           Display the average temperature for the specified city.
-                               Example: --city "New York"
-    
-    --convert fahrenheit       Convert temperatures from Celsius to Fahrenheit for all displayed cities.
-                               Example: --convert fahrenheit
-    
-    --list                     List all available cities in the dataset.
-    
-    --help                     Show this help message and exit.
-    
-Default Behavior:
-    If no options are specified, the tool will display the average temperatures for all cities in Celsius.
-    
-Additional Information:
-    The tool automatically calculates average temperatures if multiple entries exist for the same city. 
-    Temperature conversion applies globally to all cities when specified.
-    
-For more detailed documentation, visit the user guide or contact support.
-""")
 
-# Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
-else:
-    print("input is invalid or not recognized\nuse -- help command and this will show you how to use this tool.")
