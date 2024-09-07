@@ -1,5 +1,6 @@
 
-#list of all cities avaialble 
+#List Cities: to display all available cities in the dataset.
+
 
 if first_arg == "--list":
     for each_cities , temperature in new_dict.items():
