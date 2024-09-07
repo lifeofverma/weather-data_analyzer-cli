@@ -1,4 +1,9 @@
 import json
+import sys
+
+
+first_arg = sys.argv[1]
+
 
 
 new_dict = {}
@@ -12,23 +17,27 @@ with open("weather.json", 'r') as file:
         else:
             new_dict[data["city"]].append(data["temperature"]) 
 
+
+
+
+if first_arg == "--list":
+    for each_cities , temperature in new_dict.items():
+        print (each_cities)
+
+
+
+
+
+
+#print(new_dict.keys())
+
+
+"""
+if list_cities == "--list":
     
+
 for each_cities , temperature in new_dict.items():
-    print (each_cities , average =  sum(temperature))
-            
-        
+    print (each_cities , sum(temperature))
 
-
-
-"""
-else:
-            print("test")
-            
-    print(new_dict)
-"""
-
-
-
-
-
+"""     
 
