@@ -40,11 +40,11 @@ for each_city , temperature in formatted_dict.items():
 #Default Output: Display average temperatures for all cities in Celsius
 if len(sys.argv) <= 1:
     print("Average Temperatures:")
-    for each_city , temperature in formatted_dict.items():
-        average_temperature = sum(temperature)
-        celsius_temprature = (average_temperature - 32) * 5/9
-        formatted_celsius_temprature = "{:.1f}".format(celsius_temprature)
-        print (f"{each_city}: {formatted_celsius_temprature}")
+    for each_city , temperature in average_temperature_dict.items():
+        #average_temperature = sum(temperature)
+        #celsius_temprature = (average_temperature - 32) * 5/9
+        #formatted_celsius_temprature = "{:.1f}".format(celsius_temprature)
+        print (f"{each_city}: {temperature}")
     sys.exit(1)
 
 #______________________________________________________________________________________________________________________
@@ -59,13 +59,6 @@ if len(sys.argv) >= 1:
         for each_cities , temperature in formatted_dict.items():
             print (f"-{each_cities}")
         sys.exit(1)
-            #______________________________________________________________________________________________________________________
-    # Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
-    else:
-        print("Input city is not available.\nPlease refer to the command <--list> to check available cities")
-        sys.exit(1)
-
-#______________________________________________________________________________________________________________________
 
 
 
@@ -96,18 +89,31 @@ if len(sys.argv) >= 1:
         sys.exit(1)
 
 
+
+
+#______________________________________________________________________________________________________________________
 if len(sys.argv) > 2:
     second_arg = sys.argv[2]
     if first_arg == "--city":
         if second_arg in average_temperature_dict.keys():
             print(f"Average Temperatures:\n{second_arg}: {average_temperature_dict[second_arg]}")
             sys.exit(1)
-        #______________________________________________________________________________________________________________________
-    # Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
-    else:
-        print("input is invalid or not recognized\nUse the --help command to see how to use this tool.")
-        sys.exit(1)
 
+        # Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
+        else:
+            print("Input city is not available.\nPlease refer to the command <--list> to check available cities")
+            sys.exit(1)
+
+if len(sys.argv) > 2:
+    second_arg = sys.argv[2]
+    if first_arg == "--convert" and second_arg == "fahrenheit":
+        print("Average Temperatures:")
+        for each_city , temperature in formatted_dict.items():
+            average_temperature = sum(temperature)
+            celsius_temprature = (average_temperature - 32) * 5/9
+            fahrenheit_temperature = (celsius_temprature * 1.8) + 32
+            print (f"{each_city}: {fahrenheit_temperature}")
+        sys.exit(1)
 
 #______________________________________________________________________________________________________________________
 # Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
