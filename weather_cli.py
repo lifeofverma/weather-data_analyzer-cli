@@ -59,6 +59,11 @@ if len(sys.argv) >= 1:
         for each_cities , temperature in formatted_dict.items():
             print (f"-{each_cities}")
         sys.exit(1)
+            #______________________________________________________________________________________________________________________
+    # Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
+    else:
+        print("Input city is not available.\nPlease refer to the command <--list> to check available cities")
+        sys.exit(1)
 
 #______________________________________________________________________________________________________________________
 
@@ -90,15 +95,22 @@ if len(sys.argv) >= 1:
     """)
         sys.exit(1)
 
-#______________________________________________________________________________________________________________________
-# Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
-else:
-    print("input is invalid or not recognized\nUse the --help command to see how to use this tool.")
-    sys.exit(1)
-
 
 if len(sys.argv) > 2:
     second_arg = sys.argv[2]
     if first_arg == "--city":
         if second_arg in average_temperature_dict.keys():
             print(f"Average Temperatures:\n{second_arg}: {average_temperature_dict[second_arg]}")
+            sys.exit(1)
+        #______________________________________________________________________________________________________________________
+    # Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
+    else:
+        print("input is invalid or not recognized\nUse the --help command to see how to use this tool.")
+        sys.exit(1)
+
+
+#______________________________________________________________________________________________________________________
+# Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
+else:
+    print("input is invalid or not recognized\nUse the --help command to see how to use this tool.")
+    sys.exit(1)
