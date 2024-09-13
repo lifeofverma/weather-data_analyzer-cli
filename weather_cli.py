@@ -29,8 +29,16 @@ for each_city , temperature in formatted_dict.items():
 #Default Output: Display average temperatures for all cities in Celsius
 if len(sys.argv) <= 1:
     print("Average Temperatures:")
-    for each_city , temperature in average_temperature_dict.items():
-        print (f"{each_city}: {temperature}")
+
+    # Open the file in write mode (this will clear the file if it exists)
+    with open("Average Temperatures.json", 'w') as new_file:
+        new_file.truncate()
+        new_file.write("Average Temperatures:\n") # Write header to the file
+
+        # Iterate through the dictionary containing average temperatures for each city
+        for each_city , temperature in average_temperature_dict.items():
+            print (f"{each_city}: {temperature}")  # Print the city and its average temperature to the console
+            new_file.write(f"{each_city}: {temperature}\n")  # Write the city and temperature to the file
     sys.exit(1)
 
 #______________________________________________________________________________________________________________________
@@ -100,10 +108,8 @@ if len(sys.argv) > 2 :
     print("input is invalid or not recognized\nUse the --help command to see how to use this tool.")
     sys.exit(1)
 
-#______________________________________________________________________________________________________________________
+#____________________________________________________________________________________________________________________
 # Handle edge cases where user input does not match any of the valid choices Print a message indicating that the input is invalid or not recognized
 else:
     print("input is invalid or not recognized\nUse the --help command to see how to use this tool.")
     sys.exit(1)
-
-
