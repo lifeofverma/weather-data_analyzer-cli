@@ -6,7 +6,7 @@ The Weather CLI Tool is a command-line application that reads weather data from 
 
 ## Project Background
 
-I participated in my first hackathon organized by GamutX, where I am currently learning. This was one of the great learning experiences of my life. Although I didn’t complete the tool within the given time and didn't achieve significant results on the hackathon day, I am proud to share my output. I hope you enjoy this as a representation of my learning experience.
+This project was developed during my first hackathon organized by GamutX, where I’m currently on an exciting journey to enhance my skills. Participating in this event was a remarkable experience. Working on this tool provided valuable learning experiences in software development and collaboration.
 
 ## Features
 
